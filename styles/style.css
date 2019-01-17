@@ -8,21 +8,21 @@ BEM (Block Element Modifer) nameing convention used here
 - Modifer: .block--mod OR .block__elem--mod
 */
 
-.row-container {
+.container {
   display: flex;
   flex-direction: column;
 }
 
-.elm-container {
+.row {
   display: flex;
 }
 
-.elm-container__element {
+.row__element {
   flex: 1 1 100%;
   text-align: center;
   background: #f4f5f6;
 }
 
-.elm-container__element:hover {
+.row__element:hover {
   background: #bdf5ff
 }
