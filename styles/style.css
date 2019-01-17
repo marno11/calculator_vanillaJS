@@ -20,4 +20,9 @@ BEM (Block Element Modifer) nameing convention used here
 .elm-container__element {
   flex: 1 1 100%;
   text-align: center;
+  background: #f4f5f6;
+}
+
+.elm-container__element:hover {
+  background: #bdf5ff
 }
