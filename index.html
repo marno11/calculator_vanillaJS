@@ -1,29 +1,52 @@
+<!--
+BEM (Block Element Modifer) nameing convention used here
+- Any DOM node can be a block
+- Any DOM node within a block can be an element
+- Modifier is an extra class name which you add to a block/element DOM node
+- Block  : .block
+- Element: .block__elem
+- Modifer: .block--mod OR .block__elem--mod
+-->
+
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Page Title</title>
+  <title>Calculator</title>
   <link href="styles/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-  <div class="plainhtml">
-    <h1>Test</h1>
-    <p>This is just a test</p>
-    <img src="images/firefox-icon.png" alt="A fiery fox encircling a stylized earth">
-  </div>
-
-  <div id="scripedContent">
-    <!--Some of the scripted content called in scripts/script.js appears here-->
-  </div>
-
-  <div class="buttons">
-    <button id="onclickTarget">onclick type</button>
-    <button id="eventListenerTarget">event listener type</button>
-
-    <div id="nodeListed">
-      <button id="1">Click Me</button>
-      <button id="2">Click Me</button>
-      <button id="3">Click Me</button>
+  <div class="row-container">
+    <div class="elm-container">
+      <div class="elm-container__element">This is a placeholder for the input/answer</div>
+    </div>
+    <div class="elm-container">
+      <div class="elm-container__element">7</div>
+      <div class="elm-container__element">8</div>
+      <div class="elm-container__element">9</div>
+      <div class="elm-container__element">DEL</div>
+      <div class="elm-container__element">AC</div>
+    </div>
+    <div class="elm-container">
+      <div class="elm-container__element">4</div>
+      <div class="elm-container__element">5</div>
+      <div class="elm-container__element">6</div>
+      <div class="elm-container__element">X</div>
+      <div class="elm-container__element">/</div>
+    </div>
+    <div class="elm-container">
+      <div class="elm-container__element">1</div>
+      <div class="elm-container__element">2</div>
+      <div class="elm-container__element">3</div>
+      <div class="elm-container__element">+</div>
+      <div class="elm-container__element">-</div>
+    </div>
+    <div class="elm-container">
+      <div class="elm-container__element">0</div>
+      <div class="elm-container__element">.</div>
+      <div class="elm-container__element">E</div>
+      <div class="elm-container__element">ANS</div>
+      <div class="elm-container__element">=</div>
     </div>
   </div>
 

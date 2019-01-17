@@ -1,0 +1,23 @@
+/*
+BEM (Block Element Modifer) nameing convention used here
+- Any DOM node can be a block
+- Any DOM node within a block can be an element
+- Modifier is an extra class name which you add to a block/element DOM node
+- Block  : .block
+- Element: .block__elem
+- Modifer: .block--mod OR .block__elem--mod
+*/
+
+.row-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.elm-container {
+  display: flex;
+}
+
+.elm-container__element {
+  flex: 1 1 100%;
+  text-align: center;
+}
