@@ -32,6 +32,9 @@ body {
   flex: 1 1 100%;
   text-align: center;
   background: #f4f5f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .row__element:hover {
