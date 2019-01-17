@@ -16,9 +16,6 @@ body {
 
 .container {
   height: 100%;
-  max-width: 500px;
-  max-height: 500px;
-  margin: auto;
   display: flex;
   flex-direction: column;
 }
@@ -39,4 +36,17 @@ body {
 
 .row__element:hover {
   background: #bdf5ff
+}
+
+@media all and (min-height: 700px){
+  .container {
+    max-height: 500px;
+  }
+}
+
+@media all and (min-width: 700px){
+  .container {
+    max-width: 500px;
+    margin: auto;
+  }
 }
