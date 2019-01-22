@@ -10,7 +10,7 @@ var Expression = {
   },
 
   allClear: function() {
-
+    this.exp = "";
   },
 
   evaluate: function(){
