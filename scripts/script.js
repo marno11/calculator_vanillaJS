@@ -6,7 +6,7 @@ var Expression = {
   },
 
   removeLast: function() {
-
+    this.exp = this.exp.slice(0, -1);
   },
 
   allClear: function() {
