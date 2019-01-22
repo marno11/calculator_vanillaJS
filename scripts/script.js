@@ -62,3 +62,14 @@ const nodeListButtons = document.querySelectorAll('.row__element');
 nodeListButtons.forEach(button => {
   button.addEventListener('click', buttonClick)
 });
+
+//This is for testing with tape, we need to check if we're in node or if we're
+//in the browser, then export if we are in node we ignore it for code coverage
+//as it is only here for testing
+/*istanbul ignore next */
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    buttonClick: buttonClick,
+    Expression: Expression,
+  };
+}
