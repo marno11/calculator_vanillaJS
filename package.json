@@ -7,13 +7,18 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "istanbul cover tape ./test/*.spec.js",
+    "fast": "tape ./test/*.spec.js",
+    "spec": "tape ./test/*.spec.js | tap-spec",
+    "coverage": "istanbul cover tape ./test/*.spec.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "istanbul": "^0.4.5",
     "jsdom": "^13.1.0",
+    "tap-spec": "^5.0.0",
     "tape": "^4.9.2"
   }
 }
