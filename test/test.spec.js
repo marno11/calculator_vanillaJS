@@ -68,3 +68,18 @@ test('Test removeLast function', function(t){
   t.equal(actual, expected, 'should give empty string');
   t.end();
 });
+
+test('Test allClear function', function(t){
+  frontEndCode.Expression.exp = "123456";
+
+  frontEndCode.Expression.allClear();
+  let actual = frontEndCode.Expression.exp;
+  let expected = ""
+  t.equal(actual, expected, 'Should clear "123456" from exp');
+
+  frontEndCode.Expression.allClear();
+  actual = frontEndCode.Expression.exp;
+  expected = ""
+  t.equal(actual, expected, 'should leave an empty string empty');
+  t.end();
+});
