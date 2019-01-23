@@ -1,4 +1,4 @@
-var Expression = {
+var Calculator = {
   exp: "",
 
   append: function(element) {
@@ -54,7 +54,7 @@ var Expression = {
 };
 
 function buttonClick(e) {
-  Expression.input(e.target.innerHTML)
+  Calculator.input(e.target.innerHTML)
 }
 
 const nodeListButtons = document.querySelectorAll('.row__element');
@@ -70,6 +70,6 @@ nodeListButtons.forEach(button => {
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = {
     buttonClick: buttonClick,
-    Expression: Expression,
+    Calculator: Calculator,
   };
 }

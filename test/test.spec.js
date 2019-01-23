@@ -7,85 +7,85 @@ global.document = DOM.window.document;
 const frontEndCode = require('../scripts/script.js');
 
 test('Test append function', function(t) {
-  frontEndCode.Expression.append("1");
-  let actual = frontEndCode.Expression.exp;
+  frontEndCode.Calculator.append("1");
+  let actual = frontEndCode.Calculator.exp;
   let expected = "1";
-  t.equal(actual, expected, 'should append the text "1" to exp attribute of Expression');
+  t.equal(actual, expected, 'should append the text "1" to exp attribute of Calculator');
 
-  frontEndCode.Expression.append("2");
-  actual = frontEndCode.Expression.exp;
+  frontEndCode.Calculator.append("2");
+  actual = frontEndCode.Calculator.exp;
   expected = "12";
-  t.equal(actual, expected, 'should append the text "2" to exp attribute of Expression');
+  t.equal(actual, expected, 'should append the text "2" to exp attribute of Calculator');
 
-  frontEndCode.Expression.append("+");
-  actual = frontEndCode.Expression.exp;
+  frontEndCode.Calculator.append("+");
+  actual = frontEndCode.Calculator.exp;
   expected = "12+";
-  t.equal(actual, expected, 'should append the text "+" to exp attribute of Expression');
+  t.equal(actual, expected, 'should append the text "+" to exp attribute of Calculator');
 
-  frontEndCode.Expression.append("3");
-  actual = frontEndCode.Expression.exp;
+  frontEndCode.Calculator.append("3");
+  actual = frontEndCode.Calculator.exp;
   expected = "12+3";
-  t.equal(actual, expected, 'should append the text "3" to exp attribute of Expression');
+  t.equal(actual, expected, 'should append the text "3" to exp attribute of Calculator');
   t.end();
 });
 
 test('Test removeLast function', function(t){
-  frontEndCode.Expression.exp = "123456";
+  frontEndCode.Calculator.exp = "123456";
 
-  frontEndCode.Expression.removeLast();
-  let actual = frontEndCode.Expression.exp;
+  frontEndCode.Calculator.removeLast();
+  let actual = frontEndCode.Calculator.exp;
   let expected = "12345";
   t.equal(actual, expected, 'should remove the "6" from "123456" and give "12345"');
 
-  frontEndCode.Expression.removeLast();
-  actual = frontEndCode.Expression.exp;
+  frontEndCode.Calculator.removeLast();
+  actual = frontEndCode.Calculator.exp;
   expected = "1234";
   t.equal(actual, expected, 'should remove the "5" from "12345" and give "1234"');
 
-  frontEndCode.Expression.removeLast();
-  actual = frontEndCode.Expression.exp;
+  frontEndCode.Calculator.removeLast();
+  actual = frontEndCode.Calculator.exp;
   expected = "123";
   t.equal(actual, expected, 'should remove the "4" from "1234" and give "123"');
 
-  frontEndCode.Expression.removeLast();
-  actual = frontEndCode.Expression.exp;
+  frontEndCode.Calculator.removeLast();
+  actual = frontEndCode.Calculator.exp;
   expected = "12";
   t.equal(actual, expected, 'should remove the "3" from "123" and give "12"');
 
-  frontEndCode.Expression.removeLast();
-  actual = frontEndCode.Expression.exp;
+  frontEndCode.Calculator.removeLast();
+  actual = frontEndCode.Calculator.exp;
   expected = "1";
   t.equal(actual, expected, 'should remove the "2" from "12" and give "1"');
 
-  frontEndCode.Expression.removeLast();
-  actual = frontEndCode.Expression.exp;
+  frontEndCode.Calculator.removeLast();
+  actual = frontEndCode.Calculator.exp;
   expected = "";
   t.equal(actual, expected, 'should remove the "1" from "1" and give ""');
 
-  frontEndCode.Expression.removeLast();
-  actual = frontEndCode.Expression.exp;
+  frontEndCode.Calculator.removeLast();
+  actual = frontEndCode.Calculator.exp;
   expected = "";
   t.equal(actual, expected, 'should give empty string');
   t.end();
 });
 
 test('Test allClear function', function(t){
-  frontEndCode.Expression.exp = "123456";
+  frontEndCode.Calculator.exp = "123456";
 
-  frontEndCode.Expression.allClear();
-  let actual = frontEndCode.Expression.exp;
+  frontEndCode.Calculator.allClear();
+  let actual = frontEndCode.Calculator.exp;
   let expected = "";
   t.equal(actual, expected, 'Should clear "123456" from exp');
 
-  frontEndCode.Expression.allClear();
-  actual = frontEndCode.Expression.exp;
+  frontEndCode.Calculator.allClear();
+  actual = frontEndCode.Calculator.exp;
   expected = "";
   t.equal(actual, expected, 'should leave an empty string empty');
   t.end();
 });
 
 test('Test input function', function(t){
-  frontEndCode.Expression.exp = "";
+  frontEndCode.Calculator.exp = "";
 
   let expressionElements = ["1","2","3","4","5","6","7","8","9","0","X","/","+","-",".","E"];
 
@@ -93,43 +93,43 @@ test('Test input function', function(t){
   let expected = "";
 
   expressionElements.map(function(element) {
-    frontEndCode.Expression.exp = "";
-    frontEndCode.Expression.input(element);
-    actual = frontEndCode.Expression.exp;
+    frontEndCode.Calculator.exp = "";
+    frontEndCode.Calculator.input(element);
+    actual = frontEndCode.Calculator.exp;
     expected = element;
-    t.equal(actual, expected, `exp attribute of Expression should be ${element}`);
+    t.equal(actual, expected, `exp attribute of Calculator should be ${element}`);
   });
 
-  frontEndCode.Expression.exp = "1234";
-  frontEndCode.Expression.input("DEL");
-  actual = frontEndCode.Expression.exp;
+  frontEndCode.Calculator.exp = "1234";
+  frontEndCode.Calculator.input("DEL");
+  actual = frontEndCode.Calculator.exp;
   expected = "123";
-  t.equal(actual, expected, 'exp attribute of Expression should be "123"');
+  t.equal(actual, expected, 'exp attribute of Calculator should be "123"');
 
-  frontEndCode.Expression.input("AC");
-  actual = frontEndCode.Expression.exp;
+  frontEndCode.Calculator.input("AC");
+  actual = frontEndCode.Calculator.exp;
   expected = "";
-  t.equal(actual, expected, 'exp attribute of Expression should be ""');
+  t.equal(actual, expected, 'exp attribute of Calculator should be ""');
 
-  frontEndCode.Expression.exp = "";
-  frontEndCode.Expression.input("a");
-  actual = frontEndCode.Expression.exp;
+  frontEndCode.Calculator.exp = "";
+  frontEndCode.Calculator.input("a");
+  actual = frontEndCode.Calculator.exp;
   expected = "";
-  t.equal(actual, expected, 'exp attribute of Expression should be ""');
+  t.equal(actual, expected, 'exp attribute of Calculator should be ""');
 
-  frontEndCode.Expression.input("'");
-  actual = frontEndCode.Expression.exp;
+  frontEndCode.Calculator.input("'");
+  actual = frontEndCode.Calculator.exp;
   expected = "";
-  t.equal(actual, expected, 'exp attribute of Expression should be ""');
+  t.equal(actual, expected, 'exp attribute of Calculator should be ""');
 
-  frontEndCode.Expression.input('"');
-  actual = frontEndCode.Expression.exp;
+  frontEndCode.Calculator.input('"');
+  actual = frontEndCode.Calculator.exp;
   expected = "";
-  t.equal(actual, expected, 'exp attribute of Expression should be ""');
+  t.equal(actual, expected, 'exp attribute of Calculator should be ""');
 
-  frontEndCode.Expression.input("");
-  actual = frontEndCode.Expression.exp;
+  frontEndCode.Calculator.input("");
+  actual = frontEndCode.Calculator.exp;
   expected = "";
-  t.equal(actual, expected, 'exp attribute of Expression should be ""');
+  t.equal(actual, expected, 'exp attribute of Calculator should be ""');
   t.end();
 });
