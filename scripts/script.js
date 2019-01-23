@@ -1,5 +1,6 @@
 var Calculator = {
   exp: "",
+  ans: "",
 
   append: function(element) {
     this.exp = this.exp.concat(element);
