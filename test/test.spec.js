@@ -133,3 +133,109 @@ test('Test input function', function(t){
   t.equal(actual, expected, 'exp attribute of Calculator should be ""');
   t.end();
 });
+
+test("Test evaluate Function", function(t){
+  frontEndCode.Calculator.exp = "2+2";
+  frontEndCode.Calculator.evaluate();
+  let actual = frontEndCode.ans;
+  let expected = "4";
+  t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
+
+  frontEndCode.Calculator.exp = "2+2+1+4+5+7";
+  frontEndCode.Calculator.evaluate();
+  actual = frontEndCode.ans;
+  expected = "21";
+  t.equal(actual, expected, 'ans attribute of Calculator should be "21"');
+
+  frontEndCode.Calculator.exp = "2+2+1+4+5+7-5-0-9-3";
+  frontEndCode.Calculator.evaluate();
+  actual = frontEndCode.ans;
+  expected = "4";
+  t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
+
+  frontEndCode.Calculator.exp = "2+4-0+5+7-5-9+2+1-3";
+  frontEndCode.Calculator.evaluate();
+  actual = frontEndCode.ans;
+  expected = "4";
+  t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
+
+  frontEndCode.Calculator.exp = "2X2";
+  frontEndCode.Calculator.evaluate();
+  actual = frontEndCode.ans;
+  expected = "4";
+  t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
+
+  frontEndCode.Calculator.exp = "2X2X1X4X5X7";
+  frontEndCode.Calculator.evaluate();
+  actual = frontEndCode.ans;
+  expected = "560";
+  t.equal(actual, expected, 'ans attribute of Calculator should be "560"');
+
+  frontEndCode.Calculator.exp = "2X2X1X4X5X7/5/4";
+  frontEndCode.Calculator.evaluate();
+  actual = frontEndCode.ans;
+  expected = "28";
+  t.equal(actual, expected, 'ans attribute of Calculator should be "28"');
+
+  frontEndCode.Calculator.exp = "2X4X5X7/5/4X2X1";
+  frontEndCode.Calculator.evaluate();
+  actual = frontEndCode.ans;
+  expected = "28";
+  t.equal(actual, expected, 'ans attribute of Calculator should be "28"');
+
+
+  frontEndCode.Calculator.exp = "25+20";
+  frontEndCode.Calculator.evaluate();
+  actual = frontEndCode.ans;
+  expected = "45";
+  t.equal(actual, expected, 'ans attribute of Calculator should be "45"');
+
+  frontEndCode.Calculator.exp = "25+0";
+  frontEndCode.Calculator.evaluate();
+  actual = frontEndCode.ans;
+  expected = "25";
+  t.equal(actual, expected, 'ans attribute of Calculator should be "25"');
+
+  frontEndCode.Calculator.exp = "21+254+1";
+  frontEndCode.Calculator.evaluate();
+  actual = frontEndCode.ans;
+  expected = "276";
+  t.equal(actual, expected, 'ans attribute of Calculator should be "276"');
+
+  frontEndCode.Calculator.exp = "21+254+1-5-23-111";
+  frontEndCode.Calculator.evaluate();
+  actual = frontEndCode.ans;
+  expected = "137";
+  t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
+
+  frontEndCode.Calculator.exp = "2+4-0+5+7-5-9+2+1-3";
+  frontEndCode.Calculator.evaluate();
+  actual = frontEndCode.ans;
+  expected = "4";
+  t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
+
+  frontEndCode.Calculator.exp = "2X2";
+  frontEndCode.Calculator.evaluate();
+  actual = frontEndCode.ans;
+  expected = "4";
+  t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
+
+  frontEndCode.Calculator.exp = "2X2X1X4X5X7";
+  frontEndCode.Calculator.evaluate();
+  actual = frontEndCode.ans;
+  expected = "560";
+  t.equal(actual, expected, 'ans attribute of Calculator should be "560"');
+
+  frontEndCode.Calculator.exp = "2X2X1X4X5X7/5/4";
+  frontEndCode.Calculator.evaluate();
+  actual = frontEndCode.ans;
+  expected = "28";
+  t.equal(actual, expected, 'ans attribute of Calculator should be "28"');
+
+  frontEndCode.Calculator.exp = "2X4X5X7/5/4X2X1";
+  frontEndCode.Calculator.evaluate();
+  actual = frontEndCode.ans;
+  expected = "28";
+  t.equal(actual, expected, 'ans attribute of Calculator should be "28"');
+  t.end();
+});
