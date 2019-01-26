@@ -14,8 +14,42 @@ var Calculator = {
     this.exp = "";
   },
 
-  evaluate: function(){
+  evaluate: function(op,op1,op2) {
+    console.log([op1,op,op2]);
+    return 1;
+  },
 
+  operate: function(e) {
+    ops = /[X|/|\*|\+|\-]/
+    order = [/[X|/|\*]/,/[\+|\-]/];
+
+    order.forEach(function(level){
+      indexOfOp = e.search(level);
+      while (indexOfOp != -1) {
+      //if (indexOfOp != -1) {
+        endOfOp = indexOfOp + 1;
+
+        operator = e.slice(indexOfOp,endOfOp)
+
+        expBgn = e.slice(0,indexOfOp).split("").reverse().join("").search(ops)
+        if (expBgn == -1) {expBgn = e.slice(0,indexOfOp).length}
+        expBgn = indexOfOp - expBgn
+        operand1 = e.slice(expBgn, indexOfOp)
+
+        expEnd = e.slice(endOfOp).search(ops)
+        if (expEnd == -1) {expEnd = e.slice(endOfOp).length}
+        expEnd = endOfOp + expEnd
+        operand2 = e.slice(endOfOp,expEnd);
+
+        let ans = Calculator.evaluate(operator,operand1,operand2)
+
+        e = e.replace(e.slice(expBgn,expEnd),ans)
+        console.log(e);
+
+        indexOfOp = e.search(level);
+      }
+    });
+    this.ans = e;
   },
 
   input: function(key){
@@ -48,7 +82,7 @@ var Calculator = {
         this.append("**previous result**");
       break;
       case "=":
-        this.evaluate();
+        this.evaluate(this.exp);
       break;
     };
   }
