@@ -15,8 +15,21 @@ var Calculator = {
   },
 
   evaluate: function(op,op1,op2) {
-    console.log([op1,op,op2]);
-    return 1;
+    switch (op) {
+      case "*":
+        return Number(op1) * Number(op2)
+        break;
+      case "/":
+        return Number(op1) / Number(op2)
+        break;
+      case "+":
+        return Number(op1) + Number(op2)
+        break;
+      case "-":
+        return Number(op1) - Number(op2)
+        break;
+      default:
+    }
   },
 
   operate: function(e) {
@@ -44,7 +57,6 @@ var Calculator = {
         let ans = Calculator.evaluate(operator,operand1,operand2)
 
         e = e.replace(e.slice(expBgn,expEnd),ans)
-        console.log(e);
 
         indexOfOp = e.search(level);
       }
@@ -82,7 +94,7 @@ var Calculator = {
         this.append("**previous result**");
       break;
       case "=":
-        this.evaluate(this.exp);
+        this.operate(this.exp);
       break;
     };
   }
