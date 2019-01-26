@@ -134,106 +134,88 @@ test('Test input function', function(t){
   t.end();
 });
 
-test("Test evaluate Function", function(t){
-  frontEndCode.Calculator.exp = "2+2";
-  frontEndCode.Calculator.operate();
+test("Test operate function", function(t){
+  frontEndCode.Calculator.operate("2+2");
   let actual = frontEndCode.Calculator.ans;
   let expected = "4";
   t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
-
-  frontEndCode.Calculator.exp = "2+2+1+4+5+7";
-  frontEndCode.Calculator.operate();
+;
+  frontEndCode.Calculator.operate("2+2+1+4+5+7");
   actual = frontEndCode.Calculator.ans;
   expected = "21";
   t.equal(actual, expected, 'ans attribute of Calculator should be "21"');
 
-  frontEndCode.Calculator.exp = "2+2+1+4+5+7-5-0-9-3";
-  frontEndCode.Calculator.operate();
+  frontEndCode.Calculator.operate("2+2+1+4+5+7-5-0-9-3");
   actual = frontEndCode.Calculator.ans;
   expected = "4";
   t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
 
-  frontEndCode.Calculator.exp = "2+4-0+5+7-5-9+2+1-3";
-  frontEndCode.Calculator.operate();
+  frontEndCode.Calculator.operate("2+4-0+5+7-5-9+2+1-3");
   actual = frontEndCode.Calculator.ans;
   expected = "4";
   t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
 
-  frontEndCode.Calculator.exp = "2*2";
-  frontEndCode.Calculator.operate();
+  frontEndCode.Calculator.operate("2*2");
   actual = frontEndCode.Calculator.ans;
   expected = "4";
   t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
 
-  frontEndCode.Calculator.exp = "2*2*1*4*5*7";
-  frontEndCode.Calculator.operate();
+  frontEndCode.Calculator.operate("2*2*1*4*5*7");
   actual = frontEndCode.Calculator.ans;
   expected = "560";
   t.equal(actual, expected, 'ans attribute of Calculator should be "560"');
 
-  frontEndCode.Calculator.exp = "2*2*1*4*5*7/5/4";
-  frontEndCode.Calculator.operate();
+  frontEndCode.Calculator.operate("2*2*1*4*5*7/5/4");
   actual = frontEndCode.Calculator.ans;
   expected = "28";
   t.equal(actual, expected, 'ans attribute of Calculator should be "28"');
 
-  frontEndCode.Calculator.exp = "2*4*5*7/5/4*2*1";
-  frontEndCode.Calculator.operate();
+  frontEndCode.Calculator.operate("2*4*5*7/5/4*2*1");
   actual = frontEndCode.Calculator.ans;
   expected = "28";
   t.equal(actual, expected, 'ans attribute of Calculator should be "28"');
 
-
-  frontEndCode.Calculator.exp = "25+20";
-  frontEndCode.Calculator.operate();
+  frontEndCode.Calculator.operate("25+20");
   actual = frontEndCode.Calculator.ans;
   expected = "45";
   t.equal(actual, expected, 'ans attribute of Calculator should be "45"');
 
-  frontEndCode.Calculator.exp = "25+0";
-  frontEndCode.Calculator.operate();
+  frontEndCode.Calculator.operate("25+0");
   actual = frontEndCode.Calculator.ans;
   expected = "25";
   t.equal(actual, expected, 'ans attribute of Calculator should be "25"');
 
-  frontEndCode.Calculator.exp = "21+254+1";
-  frontEndCode.Calculator.operate();
+  frontEndCode.Calculator.operate("21+254+1");
   actual = frontEndCode.Calculator.ans;
   expected = "276";
   t.equal(actual, expected, 'ans attribute of Calculator should be "276"');
 
-  frontEndCode.Calculator.exp = "21+254+1-5-23-111";
-  frontEndCode.Calculator.operate();
+  frontEndCode.Calculator.operate("21+254+1-5-23-111");
   actual = frontEndCode.Calculator.ans;
   expected = "137";
   t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
 
-  frontEndCode.Calculator.exp = "2+4-0+5+7-5-9+2+1-3";
-  frontEndCode.Calculator.operate();
+  frontEndCode.Calculator.operate("2+4-0+5+7-5-9+2+1-3");
   actual = frontEndCode.Calculator.ans;
   expected = "4";
   t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
 
-  frontEndCode.Calculator.exp = "2*2";
-  frontEndCode.Calculator.operate();
+  frontEndCode.Calculator.operate("2*2");
   actual = frontEndCode.Calculator.ans;
   expected = "4";
   t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
 
-  frontEndCode.Calculator.exp = "2*2*1*4*5*7";
-  frontEndCode.Calculator.operate();
+  frontEndCode.Calculator.operate("2*2*1*4*5*7");
   actual = frontEndCode.Calculator.ans;
   expected = "560";
   t.equal(actual, expected, 'ans attribute of Calculator should be "560"');
 
-  frontEndCode.Calculator.exp = "2*2*1*4*5*7/5/4";
-  frontEndCode.Calculator.operate();
+  frontEndCode.Calculator.operate("2*2*1*4*5*7/5/4");
   actual = frontEndCode.Calculator.ans;
   expected = "28";
   t.equal(actual, expected, 'ans attribute of Calculator should be "28"');
 
-  frontEndCode.Calculator.exp = "2*4*5*7/5/4*2*1";
-  frontEndCode.Calculator.operate();
+  frontEndCode.Calculator.operate("2*4*5*7/5/4*2*1");
   actual = frontEndCode.Calculator.ans;
   expected = "28";
   t.equal(actual, expected, 'ans attribute of Calculator should be "28"');
