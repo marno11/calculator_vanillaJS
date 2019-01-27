@@ -44,10 +44,14 @@ body {
 
 .row__element--expression {
   background: #fffaf4;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .row__element--answer {
   background: #ecd5f0;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .row__element:hover {
