@@ -52,6 +52,7 @@ body {
   background: #ecd5f0;
   justify-content: flex-end;
   align-items: flex-end;
+  font-size: 1.5em;
 }
 
 .row__element:hover {
