@@ -2,16 +2,19 @@ var Calculator = {
   exp: "",
   ans: "",
 
-  append: function(element) {
+  append: function(element, callback) {
     this.exp = this.exp.concat(element);
+    callback();
   },
 
-  removeLast: function() {
+  removeLast: function(callback) {
     this.exp = this.exp.slice(0, -1);
+    callback();
   },
 
-  allClear: function() {
+  allClear: function(callback) {
     this.exp = "";
+    callback();
   },
 
   evaluate: function(op,op1,op2) {
@@ -32,7 +35,7 @@ var Calculator = {
     }
   },
 
-  operate: function(e) {
+  operate: function(e,callback) {
     ops = /[X|/|\*|\+|\-]/
     order = [/[X|/|\*]/,/[\+|\-]/];
 
@@ -62,9 +65,10 @@ var Calculator = {
       }
     });
     this.ans = e;
+    callback();
   },
 
-  input: function(key){
+  input: function(key,callback){
     switch (key) {
       case "1":
       case "2":
@@ -82,26 +86,26 @@ var Calculator = {
       case "-":
       case ".":
       case "E":
-        this.append(key);
+        this.append(key, callback);
       break;
       case "DEL":
-        this.removeLast();
+        this.removeLast(callback);
       break;
       case "AC":
-        this.allClear();
+        this.allClear(callback);
       break;
       case "ANS":
-        this.append("**previous result**");
+        this.append("**previous result**",callback);
       break;
       case "=":
-        this.operate(this.exp);
+        this.operate(this.exp,callback);
       break;
     };
   }
 };
 
 function buttonClick(e) {
-  Calculator.input(e.target.innerHTML)
+  Calculator.input(e.target.innerHTML,updateDisplay)
 }
 
 const nodeListButtons = document.querySelectorAll('.row__element');
@@ -109,6 +113,19 @@ const nodeListButtons = document.querySelectorAll('.row__element');
 nodeListButtons.forEach(button => {
   button.addEventListener('click', buttonClick)
 });
+
+function updateDisplay() {
+  if (Calculator.exp != "") {
+    document.querySelector('.row__element--expression').innerHTML = Calculator.exp;
+  } else {
+    document.querySelector('.row__element--expression').innerHTML = "Expression";
+  }
+  if (Calculator.ans != "") {
+    document.querySelector('.row__element--answer').innerHTML = Calculator.ans;
+  } else {
+    document.querySelector('.row__element--answer').innerHTML = "Answer";
+  }
+}
 
 //This is for testing with tape, we need to check if we're in node or if we're
 //in the browser, then export if we are in node we ignore it for code coverage
