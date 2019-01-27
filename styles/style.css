@@ -21,8 +21,16 @@ body {
 }
 
 .row {
-  flex: 1 1 100%;
+  flex: 1 1 auto;
   display: flex;
+}
+
+.row--expression {
+  flex: 0.8 1 auto;
+}
+
+.row--answer {
+  flex: 1.2 1 auto;
 }
 
 .row__element {
@@ -32,6 +40,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.row__element--expression {
+  background: #fffaf4;
+}
+
+.row__element--answer {
+  background: #ecd5f0;
 }
 
 .row__element:hover {
