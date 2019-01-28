@@ -58,6 +58,9 @@ var Calculator = {
         operand2 = e.slice(endOfOp,expEnd);
 
         if (operand1 == "") {
+          if (operator == "+") {
+            e = e.replace(e.slice(expBgn,expEnd),operand2)
+          }
           break;
         }
 
