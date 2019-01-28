@@ -18,6 +18,7 @@ var Calculator = {
   },
 
   evaluate: function(op,op1,op2) {
+    console.log([op1,op,op2]);
     switch (op) {
       case "*":
         return Number(op1) * Number(op2)
@@ -42,7 +43,6 @@ var Calculator = {
     order.forEach(function(level){
       indexOfOp = e.search(level);
       while (indexOfOp != -1) {
-      //if (indexOfOp != -1) {
         endOfOp = indexOfOp + 1;
 
         operator = e.slice(indexOfOp,endOfOp)
