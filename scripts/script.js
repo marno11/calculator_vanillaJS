@@ -57,6 +57,10 @@ var Calculator = {
         expEnd = endOfOp + expEnd
         operand2 = e.slice(endOfOp,expEnd);
 
+        if (operand1 == "") {
+          break;
+        }
+
         let ans = Calculator.evaluate(operator,operand1,operand2)
 
         e = e.replace(e.slice(expBgn,expEnd),ans)
