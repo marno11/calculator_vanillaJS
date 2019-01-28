@@ -8,10 +8,18 @@ BEM (Block Element Modifer) nameing convention used here
 - Modifer: .block--mod OR .block__elem--mod
 */
 
+:root {
+  --background-color: #22333b;
+  --text-window-color: #f2f4f3;
+  --primary-keys-color: #d1d1d1;
+  --secondary-keys-color: #e6c79c;
+}
+
 body {
   margin: 0;
   padding: 0;
   height: 100vh;
+  background: var(--background-color);
 }
 
 .container {
@@ -36,23 +44,38 @@ body {
 .row__element {
   flex: 1 1 100%;
   text-align: center;
-  background: #f4f5f6;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .row__element--expression {
-  background: #fffaf4;
+  background: var(--text-window-color);
   justify-content: flex-end;
   align-items: flex-end;
 }
 
 .row__element--answer {
-  background: #ecd5f0;
+  background: var(--text-window-color);
   justify-content: flex-end;
   align-items: flex-end;
   font-size: 1.5em;
+}
+
+.row__element--num {
+  background: var(--primary-keys-color);
+}
+
+.row__element--del {
+  background: var(--secondary-keys-color);
+}
+
+.row__element--ope {
+  background: var(--secondary-keys-color);
+}
+
+.row__element--equ {
+  background: var(--secondary-keys-color);
 }
 
 .row__element:hover {
