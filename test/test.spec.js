@@ -87,7 +87,7 @@ test('Test allClear function', function(t){
 test('Test input function', function(t){
   frontEndCode.Calculator.exp = "";
 
-  let expressionElements = ["1","2","3","4","5","6","7","8","9","0","X","/","+","-",".","E"];
+  let expressionElements = ["1","2","3","4","5","6","7","8","9","0","*","/","+","-",".","E"];
 
   let actual = "";
   let expected = "";

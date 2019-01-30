@@ -87,7 +87,7 @@ var Calculator = {
       case "8":
       case "9":
       case "0":
-      case "X":
+      case "*":
       case "/":
       case "+":
       case "-":
