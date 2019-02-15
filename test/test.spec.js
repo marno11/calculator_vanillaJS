@@ -137,112 +137,156 @@ test('Test input function', function(t){
 test("Test operate function, 'simple format expressions'", function(t){
   let actual = frontEndCode.Calculator.operate("2+2", function(){});
   let expected = "4";
-  t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
+  t.equal(actual, expected, 'Operate method should return: "4"');
 
   actual = frontEndCode.Calculator.operate("2+2+1+4+5+7", function(){});
   expected = "21";
-  t.equal(actual, expected, 'ans attribute of Calculator should be "21"');
+  t.equal(actual, expected, 'Operate method should return: "21"');
 
   actual = frontEndCode.Calculator.operate("2+2+1+4+5+7-5-0-9-3", function(){});
   expected = "4";
-  t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
+  t.equal(actual, expected, 'Operate method should return: "4"');
 
   actual = frontEndCode.Calculator.operate("2+4-0+5+7-5-9+2+1-3", function(){});
   expected = "4";
-  t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
+  t.equal(actual, expected, 'Operate method should return: "4"');
 
   actual = frontEndCode.Calculator.operate("2*2", function(){});
   expected = "4";
-  t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
+  t.equal(actual, expected, 'Operate method should return: "4"');
 
   actual = frontEndCode.Calculator.operate("2*2*1*4*5*7", function(){});
   expected = "560";
-  t.equal(actual, expected, 'ans attribute of Calculator should be "560"');
+  t.equal(actual, expected, 'Operate method should return: "560"');
 
   actual = frontEndCode.Calculator.operate("2*2*1*4*5*7/5/4", function(){});
   expected = "28";
-  t.equal(actual, expected, 'ans attribute of Calculator should be "28"');
+  t.equal(actual, expected, 'Operate method should return: "28"');
 
   actual = frontEndCode.Calculator.operate("2*4*5*7/5/4*2*1", function(){});
   expected = "28";
-  t.equal(actual, expected, 'ans attribute of Calculator should be "28"');
+  t.equal(actual, expected, 'Operate method should return: "28"');
 
   actual = frontEndCode.Calculator.operate("25+20", function(){});
   expected = "45";
-  t.equal(actual, expected, 'ans attribute of Calculator should be "45"');
+  t.equal(actual, expected, 'Operate method should return: "45"');
 
   actual = frontEndCode.Calculator.operate("25+0", function(){});
   expected = "25";
-  t.equal(actual, expected, 'ans attribute of Calculator should be "25"');
+  t.equal(actual, expected, 'Operate method should return: "25"');
 
   actual = frontEndCode.Calculator.operate("21+254+1", function(){});
   expected = "276";
-  t.equal(actual, expected, 'ans attribute of Calculator should be "276"');
+  t.equal(actual, expected, 'Operate method should return: "276"');
 
   actual = frontEndCode.Calculator.operate("21+254+1-5-23-111", function(){});
   expected = "137";
-  t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
+  t.equal(actual, expected, 'Operate method should return: "4"');
 
   actual = frontEndCode.Calculator.operate("2+4-0+5+7-5-9+2+1-3", function(){});
   expected = "4";
-  t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
+  t.equal(actual, expected, 'Operate method should return: "4"');
 
   actual = frontEndCode.Calculator.operate("2*2", function(){});
   expected = "4";
-  t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
+  t.equal(actual, expected, 'Operate method should return: "4"');
 
   actual = frontEndCode.Calculator.operate("2*2*1*4*5*7", function(){});
   expected = "560";
-  t.equal(actual, expected, 'ans attribute of Calculator should be "560"');
+  t.equal(actual, expected, 'Operate method should return: "560"');
 
   actual = frontEndCode.Calculator.operate("2*2*1*4*5*7/5/4", function(){});
   expected = "28";
-  t.equal(actual, expected, 'ans attribute of Calculator should be "28"');
+  t.equal(actual, expected, 'Operate method should return: "28"');
 
   actual = frontEndCode.Calculator.operate("2*4*5*7/5/4*2*1", function(){});
   expected = "28";
-  t.equal(actual, expected, 'ans attribute of Calculator should be "28"');
+  t.equal(actual, expected, 'Operate method should return: "28"');
   t.end();
 });
 
-test("Test Operate Function, 'hard format expressions'", function(t) {
-  let actual = frontEndCode.Calculator.operate("+2", function(){});
-  let expected = "2";
-  t.equal(actual, expected, 'ans attribute of Calculator should be 2');
+//Let's say we have an equation of the form "XOoY" where X and Y are
+//(positive) numbers, and O is an operator and o is also an operator BUT
+//it must be a "sign" i.e. "+" or "-".
+test("Test Operate Function, 'valid double operators'", function(t) {
+  let actual = frontEndCode.Calculator.operate("2+-2", function(){});
+  let expected = "0";
+  t.equal(actual, expected, 'Operate method should return: "0"');
 
-  actual = frontEndCode.Calculator.operate("-2", function(){});
-  expected = "-2";
-  t.equal(actual, expected, 'ans attribute of Calculator should be -2');
+  actual = frontEndCode.Calculator.operate("2++2", function(){});
+  expected = "4";
+  t.equal(actual, expected, 'Operate method should return: "4"');
+
+  actual = frontEndCode.Calculator.operate("2--2", function(){});
+  expected = "4";
+  t.equal(actual, expected, 'Operate method should return: "4"');
 
   actual = frontEndCode.Calculator.operate("2*+2", function(){});
   expected = "4";
-  t.equal(actual, expected, 'ans attribute of Calculator should be -2');
+  t.equal(actual, expected, 'Operate method should return: "4"');
 
   actual = frontEndCode.Calculator.operate("2*-2", function(){});
   expected = "-4";
-  t.equal(actual, expected, 'ans attribute of Calculator should be -2');
+  t.equal(actual, expected, 'Operate method should return: "-4"');
+
+  actual = frontEndCode.Calculator.operate("2/+2", function(){});
+  expected = "1";
+  t.equal(actual, expected, 'Operate method should return: "1"');
+
+  actual = frontEndCode.Calculator.operate("2/-2", function(){});
+  expected = "-1";
+  t.equal(actual, expected, 'Operate method should return: "-1"');
   t.end()
 });
 
-test("Test Operate Function, 'incorrectly formatted expressions'", function(t) {
-  let actual = frontEndCode.Calculator.operate("*2", function(){});
+//Let's say we have an equation of the form "XOoY" where X and Y are
+//(positive) numbers, and O is an operator and o is also an operator BUT
+//when it is NOT a "sign" i.e. "+" or "-", the equation is invalid
+test("Test Operate Function, 'invalid double operators'", function(t) {
+  let actual = frontEndCode.Calculator.operate("2-/2", function(){});
   let expected = "Err";
-  t.equal(actual, expected, 'ans attribute of Calculator should be "Err"');
+  t.equal(actual, expected, 'Operate method should return: "Err"');
 
-  actual = frontEndCode.Calculator.operate("/2", function(){});
+  actual = frontEndCode.Calculator.operate("2+/2", function(){});
   expected = "Err";
-  t.equal(actual, expected, 'ans attribute of Calculator should be "Err"');
-
-  actual = frontEndCode.Calculator.operate("2-/2", function(){});
-  expected = "Err";
-  t.equal(actual, expected, 'ans attribute of Calculator should be "Err"');
+  t.equal(actual, expected, 'Operate method should return: "Err"');
 
   actual = frontEndCode.Calculator.operate("2+*2", function(){});
   expected = "Err";
-  t.equal(actual, expected, 'ans attribute of Calculator should be "Err"');
+  t.equal(actual, expected, 'Operate method should return: "Err"');
+
+  actual = frontEndCode.Calculator.operate("2-*2", function(){});
+  expected = "Err";
+  t.equal(actual, expected, 'Operate method should return: "Err"');
 
   actual = frontEndCode.Calculator.operate("2*/2", function(){});
   expected = "Err";
-  t.equal(actual, expected, 'ans attribute of Calculator should be "Err"');
+  t.equal(actual, expected, 'Operate method should return: "Err"');
+
+  actual = frontEndCode.Calculator.operate("2/*2", function(){});
+  expected = "Err";
+  t.equal(actual, expected, 'Operate method should return: "Err"');
+  t.end()
+});
+
+test("Test Operate Function, 'valid single operand equations'", function(t) {
+  let actual = frontEndCode.Calculator.operate("+2", function(){});
+  let expected = "2";
+  t.equal(actual, expected, 'Operate method should return: "2"');
+
+  actual = frontEndCode.Calculator.operate("-2", function(){});
+  expected = "-2";
+  t.equal(actual, expected, 'Operate method should return: "-2"');
+  t.end()
+});
+
+test("Test Operate Function, 'invalid single operators'", function(t) {
+  let actual = frontEndCode.Calculator.operate("*2", function(){});
+  let expected = "Err";
+  t.equal(actual, expected, 'Operate method should return: "Err"');
+
+  actual = frontEndCode.Calculator.operate("/2", function(){});
+  expected = "Err";
+  t.equal(actual, expected, 'Operate method should return: "Err"');
   t.end()
 });
