@@ -65,6 +65,14 @@ var Calculator = {
             expEnd = endOfOp + expEnd
             operand2 = e.slice(endOfOp,expEnd);
           };
+
+          //If operand2 is still blank, that's because:
+          //1. There isn't a valid sign following the operator
+          //2. There was, but after that there was no number
+          if (operand2 == "") {
+            e = "Err"
+            break;
+          }
         };
 
         if (operand1 == "") {
