@@ -290,3 +290,27 @@ test("Test Operate Function, 'invalid single operand equations'", function(t) {
   t.equal(actual, expected, 'operate("/2") should return: "Err"');
   t.end()
 });
+
+
+test("Test Operate Function, 'valid equations starting with add or subtract'", function(t) {
+  let actual = frontEndCode.Calculator.operate("+2*3-4", function(){});
+  let expected = "2";
+  t.equal(actual, expected, 'operate("+2*3-4") should return: "2"');
+
+  actual = frontEndCode.Calculator.operate("-2*3-4", function(){});
+  expected = "-10";
+  t.equal(actual, expected, 'operate("-2*3-4") should return: "-10"');
+  t.end()
+});
+
+
+test("Test Operate Function, 'invalid equations starting with multiply or divide'", function(t) {
+  let actual = frontEndCode.Calculator.operate("*2*2+3*4", function(){});
+  let expected = "Err";
+  t.equal(actual, expected, 'operate("*2*2+3*4") should return: "Err"');
+
+  actual = frontEndCode.Calculator.operate("/2-4+4", function(){});
+  expected = "Err";
+  t.equal(actual, expected, 'operate("/2-4+4") should return: "Err"');
+  t.end()
+});
