@@ -135,139 +135,113 @@ test('Test input function', function(t){
 });
 
 test("Test operate function, 'simple format expressions'", function(t){
-  frontEndCode.Calculator.operate("2+2", function(){});
-  let actual = frontEndCode.Calculator.ans;
+  let actual = frontEndCode.Calculator.operate("2+2", function(){});
   let expected = "4";
   t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
 
-  frontEndCode.Calculator.operate("2+2+1+4+5+7", function(){});
-  actual = frontEndCode.Calculator.ans;
+  actual = frontEndCode.Calculator.operate("2+2+1+4+5+7", function(){});
   expected = "21";
   t.equal(actual, expected, 'ans attribute of Calculator should be "21"');
 
-  frontEndCode.Calculator.operate("2+2+1+4+5+7-5-0-9-3", function(){});
-  actual = frontEndCode.Calculator.ans;
+  actual = frontEndCode.Calculator.operate("2+2+1+4+5+7-5-0-9-3", function(){});
   expected = "4";
   t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
 
-  frontEndCode.Calculator.operate("2+4-0+5+7-5-9+2+1-3", function(){});
-  actual = frontEndCode.Calculator.ans;
+  actual = frontEndCode.Calculator.operate("2+4-0+5+7-5-9+2+1-3", function(){});
   expected = "4";
   t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
 
-  frontEndCode.Calculator.operate("2*2", function(){});
-  actual = frontEndCode.Calculator.ans;
+  actual = frontEndCode.Calculator.operate("2*2", function(){});
   expected = "4";
   t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
 
-  frontEndCode.Calculator.operate("2*2*1*4*5*7", function(){});
-  actual = frontEndCode.Calculator.ans;
+  actual = frontEndCode.Calculator.operate("2*2*1*4*5*7", function(){});
   expected = "560";
   t.equal(actual, expected, 'ans attribute of Calculator should be "560"');
 
-  frontEndCode.Calculator.operate("2*2*1*4*5*7/5/4", function(){});
-  actual = frontEndCode.Calculator.ans;
+  actual = frontEndCode.Calculator.operate("2*2*1*4*5*7/5/4", function(){});
   expected = "28";
   t.equal(actual, expected, 'ans attribute of Calculator should be "28"');
 
-  frontEndCode.Calculator.operate("2*4*5*7/5/4*2*1", function(){});
-  actual = frontEndCode.Calculator.ans;
+  actual = frontEndCode.Calculator.operate("2*4*5*7/5/4*2*1", function(){});
   expected = "28";
   t.equal(actual, expected, 'ans attribute of Calculator should be "28"');
 
-  frontEndCode.Calculator.operate("25+20", function(){});
-  actual = frontEndCode.Calculator.ans;
+  actual = frontEndCode.Calculator.operate("25+20", function(){});
   expected = "45";
   t.equal(actual, expected, 'ans attribute of Calculator should be "45"');
 
-  frontEndCode.Calculator.operate("25+0", function(){});
-  actual = frontEndCode.Calculator.ans;
+  actual = frontEndCode.Calculator.operate("25+0", function(){});
   expected = "25";
   t.equal(actual, expected, 'ans attribute of Calculator should be "25"');
 
-  frontEndCode.Calculator.operate("21+254+1", function(){});
-  actual = frontEndCode.Calculator.ans;
+  actual = frontEndCode.Calculator.operate("21+254+1", function(){});
   expected = "276";
   t.equal(actual, expected, 'ans attribute of Calculator should be "276"');
 
-  frontEndCode.Calculator.operate("21+254+1-5-23-111", function(){});
-  actual = frontEndCode.Calculator.ans;
+  actual = frontEndCode.Calculator.operate("21+254+1-5-23-111", function(){});
   expected = "137";
   t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
 
-  frontEndCode.Calculator.operate("2+4-0+5+7-5-9+2+1-3", function(){});
-  actual = frontEndCode.Calculator.ans;
+  actual = frontEndCode.Calculator.operate("2+4-0+5+7-5-9+2+1-3", function(){});
   expected = "4";
   t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
 
-  frontEndCode.Calculator.operate("2*2", function(){});
-  actual = frontEndCode.Calculator.ans;
+  actual = frontEndCode.Calculator.operate("2*2", function(){});
   expected = "4";
   t.equal(actual, expected, 'ans attribute of Calculator should be "4"');
 
-  frontEndCode.Calculator.operate("2*2*1*4*5*7", function(){});
-  actual = frontEndCode.Calculator.ans;
+  actual = frontEndCode.Calculator.operate("2*2*1*4*5*7", function(){});
   expected = "560";
   t.equal(actual, expected, 'ans attribute of Calculator should be "560"');
 
-  frontEndCode.Calculator.operate("2*2*1*4*5*7/5/4", function(){});
-  actual = frontEndCode.Calculator.ans;
+  actual = frontEndCode.Calculator.operate("2*2*1*4*5*7/5/4", function(){});
   expected = "28";
   t.equal(actual, expected, 'ans attribute of Calculator should be "28"');
 
-  frontEndCode.Calculator.operate("2*4*5*7/5/4*2*1", function(){});
-  actual = frontEndCode.Calculator.ans;
+  actual = frontEndCode.Calculator.operate("2*4*5*7/5/4*2*1", function(){});
   expected = "28";
   t.equal(actual, expected, 'ans attribute of Calculator should be "28"');
   t.end();
 });
 
 test("Test Operate Function, 'hard format expressions'", function(t) {
-  frontEndCode.Calculator.operate("+2", function(){});
-  let actual = frontEndCode.Calculator.ans;
+  let actual = frontEndCode.Calculator.operate("+2", function(){});
   let expected = "2";
   t.equal(actual, expected, 'ans attribute of Calculator should be 2');
 
-  frontEndCode.Calculator.operate("-2", function(){});
-  actual = frontEndCode.Calculator.ans;
+  actual = frontEndCode.Calculator.operate("-2", function(){});
   expected = "-2";
   t.equal(actual, expected, 'ans attribute of Calculator should be -2');
 
-  frontEndCode.Calculator.operate("2*+2", function(){});
-  actual = frontEndCode.Calculator.ans;
+  actual = frontEndCode.Calculator.operate("2*+2", function(){});
   expected = "4";
   t.equal(actual, expected, 'ans attribute of Calculator should be -2');
 
-  frontEndCode.Calculator.operate("2*-2", function(){});
-  actual = frontEndCode.Calculator.ans;
+  actual = frontEndCode.Calculator.operate("2*-2", function(){});
   expected = "-4";
   t.equal(actual, expected, 'ans attribute of Calculator should be -2');
   t.end()
 });
 
 test("Test Operate Function, 'incorrectly formatted expressions'", function(t) {
-  frontEndCode.Calculator.operate("*2", function(){});
-  let actual = frontEndCode.Calculator.ans;
+  let actual = frontEndCode.Calculator.operate("*2", function(){});
   let expected = "Err";
   t.equal(actual, expected, 'ans attribute of Calculator should be "Err"');
 
-  frontEndCode.Calculator.operate("/2", function(){});
-  actual = frontEndCode.Calculator.ans;
+  actual = frontEndCode.Calculator.operate("/2", function(){});
   expected = "Err";
   t.equal(actual, expected, 'ans attribute of Calculator should be "Err"');
 
-  frontEndCode.Calculator.operate("2-/2", function(){});
-  actual = frontEndCode.Calculator.ans;
+  actual = frontEndCode.Calculator.operate("2-/2", function(){});
   expected = "Err";
   t.equal(actual, expected, 'ans attribute of Calculator should be "Err"');
 
-  frontEndCode.Calculator.operate("2+*2", function(){});
-  actual = frontEndCode.Calculator.ans;
+  actual = frontEndCode.Calculator.operate("2+*2", function(){});
   expected = "Err";
   t.equal(actual, expected, 'ans attribute of Calculator should be "Err"');
 
-  frontEndCode.Calculator.operate("2*/2", function(){});
-  actual = frontEndCode.Calculator.ans;
+  actual = frontEndCode.Calculator.operate("2*/2", function(){});
   expected = "Err";
   t.equal(actual, expected, 'ans attribute of Calculator should be "Err"');
   t.end()

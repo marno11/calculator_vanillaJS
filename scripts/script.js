@@ -43,7 +43,7 @@ var Calculator = {
     order.forEach(function(level){
       indexOfOp = e.search(level);
       while (indexOfOp != -1) {
-        endOfOp = indexOfOp + 1;
+        endOfOp = indexOfOp + 1; //TODO: Handle longer operators
 
         operator = e.slice(indexOfOp,endOfOp)
 
@@ -51,11 +51,13 @@ var Calculator = {
         if (expBgn == -1) {expBgn = e.slice(0,indexOfOp).length}
         expBgn = indexOfOp - expBgn
         operand1 = e.slice(expBgn, indexOfOp)
+        //What if operand1 is ""?
 
         expEnd = e.slice(endOfOp).search(ops)
         if (expEnd == -1) {expEnd = e.slice(endOfOp).length}
         expEnd = endOfOp + expEnd
         operand2 = e.slice(endOfOp,expEnd);
+        //What if operand2 is ""?
 
         if (operand1 == "") {
           if (operator == "+") {
@@ -71,8 +73,7 @@ var Calculator = {
         indexOfOp = e.search(level);
       }
     });
-    this.ans = e;
-    callback();
+    return(e);
   },
 
   input: function(key,callback){
@@ -105,7 +106,8 @@ var Calculator = {
         this.append("**previous result**",callback);
       break;
       case "=":
-        this.operate(this.exp,callback);
+        this.ans = this.operate(this.exp,callback);
+        callback();
       break;
     };
   }
