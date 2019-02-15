@@ -280,7 +280,7 @@ test("Test Operate Function, 'valid single operand equations'", function(t) {
   t.end()
 });
 
-test("Test Operate Function, 'invalid single operators'", function(t) {
+test("Test Operate Function, 'invalid single operand equations'", function(t) {
   let actual = frontEndCode.Calculator.operate("*2", function(){});
   let expected = "Err";
   t.equal(actual, expected, 'Operate method should return: "Err"');
