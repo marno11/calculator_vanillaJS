@@ -76,6 +76,10 @@ var Calculator = {
         };
 
         if (operand1 == "") {
+          //If the operator is multiply or divide, the equation is invalid
+          if (operator.search(order[0]) != -1) {
+            e = "Err"
+          }
           if (operator == "+") {
             e = e.replace(e.slice(expBgn,expEnd),operand2)
           }
