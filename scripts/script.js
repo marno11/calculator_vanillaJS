@@ -18,7 +18,6 @@ var Calculator = {
   },
 
   evaluate: function(op,op1,op2) {
-    console.log([op1,op,op2]);
     switch (op) {
       case "*":
         return Number(op1) * Number(op2)
