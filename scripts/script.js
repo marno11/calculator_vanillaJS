@@ -51,13 +51,21 @@ var Calculator = {
         if (expBgn == -1) {expBgn = e.slice(0,indexOfOp).length}
         expBgn = indexOfOp - expBgn
         operand1 = e.slice(expBgn, indexOfOp)
-        //What if operand1 is ""?
 
         expEnd = e.slice(endOfOp).search(ops)
         if (expEnd == -1) {expEnd = e.slice(endOfOp).length}
         expEnd = endOfOp + expEnd
         operand2 = e.slice(endOfOp,expEnd);
-        //What if operand2 is ""?
+
+        //If operand2 is "", check if it's a "sign"
+        if (operand2 == "") {
+          if (e.slice(endOfOp, endOfOp+1).search(order[1]) != -1) {
+            expEnd = e.slice(endOfOp+1).search(ops)
+            if (expEnd == -1) {expEnd = e.slice(endOfOp).length}
+            expEnd = endOfOp + expEnd
+            operand2 = e.slice(endOfOp,expEnd);
+          };
+        };
 
         if (operand1 == "") {
           if (operator == "+") {
