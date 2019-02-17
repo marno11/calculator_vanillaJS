@@ -85,6 +85,10 @@ var Calculator = {
           indexOfOp = e.slice(endOfOp).search(level);
           //If so
           if (indexOfOp != -1) {
+            if (indexOfOp == 0) {
+              e = "Err";
+              break;
+            }
             indexOfOp = indexOfOp + endOfOp;  //The indexOfOp is referenced to a slice,
                                               //but this adjusts it to reference w.r.t. to the
                                               //whole equation from which the slice was made
