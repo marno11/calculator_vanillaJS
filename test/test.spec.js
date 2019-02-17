@@ -326,3 +326,18 @@ test("Test Operate Function, 'invalid equations starting with multiply or divide
   t.equal(actual, expected, 'operate("+++2*3-4") should return: "Err"');
   t.end()
 });
+
+test("Test Insert ANS", function(t) {
+  frontEndCode.Calculator.exp = ""
+  frontEndCode.Calculator.ans = "1"
+  let actual = frontEndCode.Calculator.operate("ANS", function(){});
+  let expected = "1"
+  t.equal(actual, expected, 'With ans=1, operate("ANS") should return "1"')
+
+  frontEndCode.Calculator.exp = ""
+  frontEndCode.Calculator.ans = "2"
+  actual = frontEndCode.Calculator.operate("2*ANS+3", function(){});
+  expected = "7"
+  t.equal(actual, expected, 'With ans=2, operate("2*ANS+3") should return "7"')
+  t.end()
+});
