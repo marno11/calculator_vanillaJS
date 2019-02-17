@@ -312,5 +312,17 @@ test("Test Operate Function, 'invalid equations starting with multiply or divide
   actual = frontEndCode.Calculator.operate("/2-4+4", function(){});
   expected = "Err";
   t.equal(actual, expected, 'operate("/2-4+4") should return: "Err"');
+
+  actual = frontEndCode.Calculator.operate("--2*3-4", function(){});
+  expected = "Err";
+  t.equal(actual, expected, 'operate("--2*3-4") should return: "Err"');
+
+  actual = frontEndCode.Calculator.operate("+-2*3-4", function(){});
+  expected = "Err";
+  t.equal(actual, expected, 'operate("+-2*3-4") should return: "Err"');
+
+  actual = frontEndCode.Calculator.operate("+++2*3-4", function(){});
+  expected = "Err";
+  t.equal(actual, expected, 'operate("+++2*3-4") should return: "Err"');
   t.end()
 });
