@@ -37,10 +37,6 @@ body {
   flex: 0.8 1 auto;
 }
 
-.row--answer {
-  flex: 1.2 1 auto;
-}
-
 .row__element {
   flex: 1 1 100%;
   text-align: center;
@@ -59,7 +55,7 @@ body {
   background: var(--text-window-color);
   justify-content: flex-end;
   align-items: flex-end;
-  font-size: 1.5em;
+  font-size: 3em;
 }
 
 .row__element--num {
