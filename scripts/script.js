@@ -37,87 +37,129 @@ var Calculator = {
 
   operate: function(e,callback) {
     ops = /[X|/|\*|\+|\-]/
-    order = [/[X|/|\*]/,/[\+|\-]/];
+    ans = /[ANS]/
+    multdiv = /[X|/|\*]/
+    addsub = /[\+|\-]/
 
-    order.forEach(function(level){
-      indexOfOp = e.search(level);
-      while (indexOfOp != -1) {
-        endOfOp = indexOfOp + 1; //TODO: Handle longer operators
+    //=========MULT DIV====================
+    indexOfOp = e.search(multdiv);
+    while (indexOfOp != -1) {
+      endOfOp = indexOfOp + 1;
 
-        operator = e.slice(indexOfOp,endOfOp)
+      operator = e.slice(indexOfOp,endOfOp)
 
-        expBgn = e.slice(0,indexOfOp).split("").reverse().join("").search(ops)
-        if (expBgn == -1) {expBgn = e.slice(0,indexOfOp).length}
-        expBgn = indexOfOp - expBgn
-        operand1 = e.slice(expBgn, indexOfOp)
+      expBgn = e.slice(0,indexOfOp).split("").reverse().join("").search(ops)
+      if (expBgn == -1) {expBgn = e.slice(0,indexOfOp).length}
+      expBgn = indexOfOp - expBgn
+      operand1 = e.slice(expBgn, indexOfOp)
 
-        expEnd = e.slice(endOfOp).search(ops)
-        if (expEnd == -1) {expEnd = e.slice(endOfOp).length}
-        expEnd = endOfOp + expEnd
-        operand2 = e.slice(endOfOp,expEnd);
+      expEnd = e.slice(endOfOp).search(ops)
+      if (expEnd == -1) {expEnd = e.slice(endOfOp).length}
+      expEnd = endOfOp + expEnd
+      operand2 = e.slice(endOfOp,expEnd);
 
-        //If operand2 is "", check if it's a "sign"
-        if (operand2 == "") {
-          if (e.slice(endOfOp, endOfOp+1).search(order[1]) != -1) {
-            expEnd = e.slice(endOfOp+1).search(ops)
-            if (expEnd == -1) {expEnd = e.slice(endOfOp).length}
-            expEnd = endOfOp + expEnd
-            operand2 = e.slice(endOfOp,expEnd);
-          };
-
-          //If operand2 is still blank, that's because:
-          //1. There isn't a valid sign following the operator
-          //2. There was, but after that there was no number
-          if (operand2 == "") {
-            e = "Err"
-            break;
-          }
+      //If operand2 is "", check if it's a "sign"
+      if (operand2 == "") {
+        if (e.slice(endOfOp, endOfOp+1).search(addsub) != -1) {
+          expEnd = e.slice(endOfOp+1).search(ops)
+          if (expEnd == -1) {expEnd = e.slice(endOfOp).length}
+          expEnd = endOfOp + expEnd
+          operand2 = e.slice(endOfOp,expEnd);
         };
 
-        if (operand1 == "") {
-          //If the operator is multiply or divide, the equation is invalid
-          if (operator.search(order[0]) != -1) {
-            e = "Err"
-            break;
-          }
-          //The operator must be add or subtract (since it's not multiply or divide)
-          //Check if there is another operator in the equation
-          indexOfOp = e.slice(endOfOp).search(level);
-          //If so
-          if (indexOfOp != -1) {
-            if (indexOfOp == 0) {
-              e = "Err";
-              break;
-            }
-            indexOfOp = indexOfOp + endOfOp;  //The indexOfOp is referenced to a slice,
-                                              //but this adjusts it to reference w.r.t. to the
-                                              //whole equation from which the slice was made
-            endOfOp = indexOfOp + 1;          //TODO: Handle longer operators
-
-            operator = e.slice(indexOfOp,endOfOp)
-
-            operand1 = e.slice(0,indexOfOp)
-
-            expEnd = e.slice(endOfOp).search(ops)
-            if (expEnd == -1) {expEnd = e.slice(endOfOp).length}
-            expEnd = endOfOp + expEnd
-            operand2 = e.slice(endOfOp,expEnd);
-          } else {
-            if (operator == "+") {
-              e = e.replace(e.slice(expBgn,expEnd),operand2)
-            }
-            //It's not mult/div, there isn't more equation, it's not +
-            break;
-          }
+        //If operand2 is still blank, that's because:
+        //1. There isn't a valid sign following the operator
+        //2. There was, but after that there was no number
+        if (operand2 == "") {
+          return("Err")
         }
+      };
 
-        let ans = Calculator.evaluate(operator,operand1,operand2)
-
-        e = e.replace(e.slice(expBgn,expEnd),ans)
-
-        indexOfOp = e.search(level);
+      if (operand1 == "") {
+        return("Err");
       }
-    });
+
+      let ans = Calculator.evaluate(operator,operand1,operand2)
+
+      e = e.replace(e.slice(expBgn,expEnd),ans)
+
+      indexOfOp = e.search(multdiv);
+    }
+
+    //==========ADD SUB==============
+    indexOfOp = e.search(addsub);
+    while (indexOfOp != -1) {
+      endOfOp = indexOfOp + 1;
+
+      operator = e.slice(indexOfOp,endOfOp)
+
+      expBgn = e.slice(0,indexOfOp).split("").reverse().join("").search(ops)
+      if (expBgn == -1) {expBgn = e.slice(0,indexOfOp).length}
+      expBgn = indexOfOp - expBgn
+      operand1 = e.slice(expBgn, indexOfOp)
+
+      expEnd = e.slice(endOfOp).search(ops)
+      if (expEnd == -1) {expEnd = e.slice(endOfOp).length}
+      expEnd = endOfOp + expEnd
+      operand2 = e.slice(endOfOp,expEnd);
+
+      //If operand2 is "", check if it's a "sign"
+      if (operand2 == "") {
+        if (e.slice(endOfOp, endOfOp+1).search(addsub) != -1) {
+          expEnd = e.slice(endOfOp+1).search(ops)
+          if (expEnd == -1) {expEnd = e.slice(endOfOp).length}
+          expEnd = endOfOp + expEnd
+          operand2 = e.slice(endOfOp,expEnd);
+        };
+
+        //If operand2 is still blank, that's because:
+        //1. There isn't a valid sign following the operator
+        //2. There was, but after that there was no number
+        if (operand2 == "") {
+          return("Err")
+        }
+      };
+
+      if (operand1 == "") {
+        //Check if there is another operator in the equation
+        indexOfOp = e.slice(endOfOp).search(addsub);
+        if (indexOfOp != -1) {
+          //If the next operator is immediatly after e.g. ++123, it's invalid
+          if (indexOfOp == 0) {
+            return("Err");
+          }
+
+          //The indexOfOp is referenced to a slice, but this adjusts it to
+          //reference w.r.t. to the whole equation from which the slice was made
+          indexOfOp = indexOfOp + endOfOp;
+
+          endOfOp = indexOfOp + 1;
+
+          operator = e.slice(indexOfOp,endOfOp)
+
+          operand1 = e.slice(0,indexOfOp)
+
+          expEnd = e.slice(endOfOp).search(ops)
+          if (expEnd == -1) {expEnd = e.slice(endOfOp).length}
+          expEnd = endOfOp + expEnd
+          operand2 = e.slice(endOfOp,expEnd);
+        } else {
+          if (operator == "+") {
+            e = e.replace(e.slice(expBgn,expEnd),operand2)
+          }
+          //It's not mult/div, there isn't more equation, it's not +.
+          //It is -N
+          return(e);
+        }
+      }
+
+      let ans = Calculator.evaluate(operator,operand1,operand2)
+
+      e = e.replace(e.slice(expBgn,expEnd),ans)
+
+      indexOfOp = e.search(addsub);
+    }
+
     return(e);
   },
 
