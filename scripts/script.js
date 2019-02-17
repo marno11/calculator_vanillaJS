@@ -37,9 +37,12 @@ var Calculator = {
 
   operate: function(e,callback) {
     ops = /[X|/|\*|\+|\-]/
-    ans = /[ANS]/
+    ans = /ANS/
     multdiv = /[X|/|\*]/
     addsub = /[\+|\-]/
+
+    //=========ANS========================
+    e = e.replace(ans,Calculator.ans)
 
     //=========MULT DIV====================
     indexOfOp = e.search(multdiv);
