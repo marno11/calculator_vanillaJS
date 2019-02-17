@@ -78,11 +78,33 @@ var Calculator = {
           //If the operator is multiply or divide, the equation is invalid
           if (operator.search(order[0]) != -1) {
             e = "Err"
+            break;
           }
-          if (operator == "+") {
-            e = e.replace(e.slice(expBgn,expEnd),operand2)
+          //The operator must be add or subtract (since it's not multiply or divide)
+          //Check if there is another operator in the equation
+          indexOfOp = e.slice(endOfOp).search(level);
+          //If so
+          if (indexOfOp != -1) {
+            indexOfOp = indexOfOp + endOfOp;  //The indexOfOp is referenced to a slice,
+                                              //but this adjusts it to reference w.r.t. to the
+                                              //whole equation from which the slice was made
+            endOfOp = indexOfOp + 1;          //TODO: Handle longer operators
+
+            operator = e.slice(indexOfOp,endOfOp)
+
+            operand1 = e.slice(0,indexOfOp)
+
+            expEnd = e.slice(endOfOp).search(ops)
+            if (expEnd == -1) {expEnd = e.slice(endOfOp).length}
+            expEnd = endOfOp + expEnd
+            operand2 = e.slice(endOfOp,expEnd);
+          } else {
+            if (operator == "+") {
+              e = e.replace(e.slice(expBgn,expEnd),operand2)
+            }
+            //It's not mult/div, there isn't more equation, it's not +
+            break;
           }
-          break;
         }
 
         let ans = Calculator.evaluate(operator,operand1,operand2)
