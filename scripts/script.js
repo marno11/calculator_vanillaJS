@@ -148,7 +148,7 @@ var Calculator = {
         this.allClear(callback);
       break;
       case "ANS":
-        this.append("**previous result**",callback);
+        this.append("ANS",callback);
       break;
       case "=":
         this.ans = this.operate(this.exp,callback);
