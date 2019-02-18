@@ -339,5 +339,12 @@ test("Test Insert ANS", function(t) {
   actual = frontEndCode.Calculator.operate("2*ANS+3", function(){});
   expected = "7"
   t.equal(actual, expected, 'With ans=2, operate("2*ANS+3") should return "7"')
+
+
+    frontEndCode.Calculator.exp = ""
+    frontEndCode.Calculator.ans = "2"
+    actual = frontEndCode.Calculator.operate("ANS+ANS", function(){});
+    expected = "4"
+    t.equal(actual, expected, 'With ans=2, operate("ANS+ANS") should return "4"')
   t.end()
 });
