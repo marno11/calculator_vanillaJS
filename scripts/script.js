@@ -37,7 +37,7 @@ var Calculator = {
 
   operate: function(e,callback) {
     ops = /[X|/|\*|\+|\-]/
-    ans = /ANS/
+    ans = /ANS/g
     multdiv = /[X|/|\*]/
     addsub = /[\+|\-]/
 
