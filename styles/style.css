@@ -78,7 +78,7 @@ body {
   background: #bdf5ff
 }
 
-@media all and (min-height: 700px){
+@media all and (min-height: 825px){
   .container {
     max-height: 500px;
   }
